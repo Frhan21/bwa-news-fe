@@ -67,7 +67,7 @@ export default function RootLayout({
                   asChild
                   className="w-full justify-start"
                 >
-                  <Link href={""}>
+                  <Link href={"/dashboard/content"}>
                     <BookOpen className="mr-2 w-4 h-4"/>
                     Contents
                   </Link>
@@ -77,7 +77,7 @@ export default function RootLayout({
                   asChild
                   className="w-full justify-start"
                 >
-                  <Link href={""}>
+                  <Link href={"/dashboard/user"}>
                     <User className="mr-2 w-4 h-4"/>
                     User
                   </Link>

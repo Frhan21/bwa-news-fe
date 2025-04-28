@@ -9,17 +9,16 @@ export interface Content {
     category_id: number;
     user_id: number;
     created_at: string; 
-    author: string;
+    user: string;
+    category: string; 
 }
 
 export interface ContentRequest {
-    id: number; 
     title: string; 
     description: string;
     excerpt: string;
     image: string;
     status: string;
-    tags: string[];
+    tags: string;
     category_id: number;
-    user_id: number;
 }

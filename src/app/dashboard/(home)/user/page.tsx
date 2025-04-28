@@ -1,30 +1,29 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import { DataTable } from "@/components/ui/data-table";
+
 import { AlertCircle, Plus } from "lucide-react";
 import Link from "next/link";
 import axiosInstance, {SetupInerceptor } from "../../../../../lib/axios";
 import { useEffect, useState } from "react";
-import { Category } from "@/model/Category";
+import { User } from "@/model/User";
 import { ApiResponse } from "@/model/ApiResponse";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { columns } from "./components/columns-table";
+import FormUser from "./components/form-user";
 
 
 const Page = () => {
 
     SetupInerceptor(); 
 
-    const [categories, setCategories] = useState<Category[]>([]); 
+    const [user, setUser] = useState<User | null>(null); 
     const [loading, setLoading] = useState<boolean>(true); 
     const [error, setError] = useState<string | null>(null)
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axiosInstance.get<ApiResponse<Category[]>>("/admin/categories");
+                const res = await axiosInstance.get<ApiResponse<User>>("/admin/users/profile");
                 // console.log(res.data.data)
-                setCategories(res.data.data); 
+                setUser(res.data.data); 
                 setLoading(false)
             } catch (error:  any) {
                 setError(error.message || "Error fetching data")
@@ -53,16 +52,10 @@ const Page = () => {
         <>
             <div className="flex flex-row items-center justify-between">
                 <div className="my-5 text-2xl font-bold">
-                    Category Page
+                    Profile Page
                 </div>
-                <Button asChild variant={"default"}>
-                    <Link href={"/dashboard/category/create"} className="">
-                       <Plus className="mr-2 w-4 h-4"/>
-                        Tambah Kategori disini !
-                    </Link>
-                </Button>
             </div>
-            <DataTable  columns={columns} data={categories}/> 
+            <FormUser defaultValues={user}/> 
         </>
     )
 }
