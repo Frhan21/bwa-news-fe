@@ -203,7 +203,7 @@ const FormContent: FC<FormContentProps> = ({
       Swal.fire({
         position: "top-end",
         icon: "error",
-        title: "Your work has been created",
+        title: "Your work cannot created",
         text: error.message,
         toast: true,
         showConfirmButton: false,

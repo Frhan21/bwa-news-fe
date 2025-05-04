@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: "Dashboard Admin News Portal",
 };
 
-export default function RootLayout({
+export default function DashboardLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
